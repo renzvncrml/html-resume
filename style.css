@@ -1,16 +1,56 @@
-@page{
-  size: letter portrait;
+@page {
+  size: auto;
   margin: 0;
+  
 }
+
+@media print {
+
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: auto;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: avoid;
+	
+
+  }
+}
+
 
 *{
   box-sizing: border-box;
 }
-
-:root{
+:root {
   --page-width: 8.5in;
   --page-height: 11in;
   --main-width: 6.4in;
+ --sidebar-width: calc(var(--page-width) - var(--main-width));
+  --decorator-horizontal-margin: 0.2in;
+  
+  
+  --sidebar-horizontal-padding: 0.2in;
+
+  /* XXX: using px for very good precision control */
+  --decorator-outer-offset-top: 10px;
+  --decorator-outer-offset-left: -5.5px;
+  --decorator-border-width: 1px;
+  --decorator-outer-dim: 9px;
+  --decorator-border: 1px solid #ccc;
+
+  --row-blocks-padding-top: 5pt;
+  --date-block-width: 0.6in;
+
+  --main-blocks-title-icon-offset-left: -19pt;
+}
+
+:root {
+  --page-width: 8.27in;
+  --page-height: 11.69in;
+  --main-width: 6.7in;
   --sidebar-width: calc(var(--page-width) - var(--main-width));
   --decorator-horizontal-margin: 0.2in;
 
@@ -29,7 +69,10 @@
   --main-blocks-title-icon-offset-left: -19pt;
 }
 
+
+
 body{
+  margin: 0;
   width: var(--page-width);
   height: var(--page-height);
   margin: 0;
@@ -38,7 +81,9 @@ body{
   line-height: 1.3;
   color: #444;
   hyphens: auto;
+ 
 }
+
 
 h1, h2, h3{
   margin: 0;
@@ -64,6 +109,7 @@ li{
   padding: 0.6in var(--sidebar-horizontal-padding);
   background-color: #f2f2f2;
   font-size: 8.5pt;
+ 
 }
 
 /* main */
@@ -326,6 +372,9 @@ li{
 
 .side-block{
   margin-top: 0.5in; 
+
+  
+  
 }
 
 #contact ul{
@@ -352,7 +401,7 @@ li{
 
 #disclaimer{
   position: absolute;
-  bottom: var(--sidebar-horizontal-padding);
+   bottom: var(--sidebar-horizontal-padding);
   right: var(--sidebar-horizontal-padding);
   font-size: 7.5pt;
   font-style: italic;
@@ -366,4 +415,5 @@ li{
   font-family: "Source Code Pro";
   font-weight: 400;
   font-style: normal;
+  page-break-inside: avoid;
 }
